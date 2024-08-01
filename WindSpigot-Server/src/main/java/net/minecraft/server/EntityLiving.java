@@ -27,6 +27,7 @@ import dev.cobblesword.nachospigot.knockback.KnockbackProfile;
 import ga.windpvp.windspigot.cache.Constants;
 import ga.windpvp.windspigot.config.WindSpigotConfig;
 import ga.windpvp.windspigot.knockback.KnockbackConfig;
+import ga.windpvp.windspigot.knockback.CraftKnockbackProfile;
 
 public abstract class EntityLiving extends Entity {
 
