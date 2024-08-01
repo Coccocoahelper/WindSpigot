@@ -10,6 +10,7 @@ import java.util.Random;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.craftbukkit.entity.CraftEntity;
 import org.bukkit.craftbukkit.event.CraftEventFactory;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Vehicle;
@@ -972,7 +973,7 @@ public abstract class EntityLiving extends Entity {
 		return Math.min(modifiedRange, kb.getMinRange());
 	}
 
-	public void a(double x, double z, DamageSource source) {
+	public void a(Entity opponent, double x, double z, DamageSource source) {
 		if (this.random.nextDouble() >= this.getAttributeInstance(GenericAttributes.c).getValue()) {
 			this.ai = true;
 
