@@ -6,7 +6,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import dev.cobblesword.nachospigot.knockback.KnockbackProfile;
 import ga.windpvp.windspigot.commons.ClickableBuilder;
 import ga.windpvp.windspigot.knockback.CraftKnockbackProfile;
 import ga.windpvp.windspigot.knockback.KnockbackConfig;
@@ -63,7 +62,7 @@ public class KnockbackCommand extends Command {
 				break;
 			}
 			case "load": {
-				KnockbackProfile profile = KnockbackConfig.getKbProfileByName(args[1]);
+				CraftKnockbackProfile profile = KnockbackConfig.getKbProfileByName(args[1]);
 				if (profile != null) {
 					if (KnockbackConfig.getCurrentKb().getName().equalsIgnoreCase(args[1])) {
 						player.sendMessage("§cThis profile is loaded.");
@@ -81,7 +80,7 @@ public class KnockbackCommand extends Command {
 				break;
 			}
 			case "view": {
-				KnockbackProfile profile = KnockbackConfig.getKbProfileByName(args[1]);
+				CraftKnockbackProfile profile = KnockbackConfig.getKbProfileByName(args[1]);
 				if (profile != null) {
 					knockbackCommandView(player, profile);
 					return true;
@@ -90,7 +89,7 @@ public class KnockbackCommand extends Command {
 				break;
 			}
 			case "projectile": {
-				KnockbackProfile profile = KnockbackConfig.getKbProfileByName(args[1]);
+				CraftKnockbackProfile profile = KnockbackConfig.getKbProfileByName(args[1]);
 				if (profile != null) {
 					knockbackCommandViewProjectiles(player, profile);
 					return true;
@@ -107,7 +106,7 @@ public class KnockbackCommand extends Command {
 		case 3: {
 			switch (args[0].toLowerCase()) {
 			case "set": {
-				KnockbackProfile profile = KnockbackConfig.getKbProfileByName(args[1]);
+				CraftKnockbackProfile profile = KnockbackConfig.getKbProfileByName(args[1]);
 				if (profile == null) {
 					sender.sendMessage("§cA profile with that name could not be found.");
 					return false;
@@ -125,7 +124,7 @@ public class KnockbackCommand extends Command {
 		}
 		case 4: {
 			if ("edit".equalsIgnoreCase(args[0])) {
-				KnockbackProfile profile = KnockbackConfig.getKbProfileByName(args[1].toLowerCase());
+				CraftKnockbackProfile profile = KnockbackConfig.getKbProfileByName(args[1].toLowerCase());
 				if (profile == null) {
 					player.sendMessage("§cThis profile doesn't exist.");
 					return false;
@@ -421,7 +420,7 @@ public class KnockbackCommand extends Command {
 	private void knockbackCommandMain(Player player) {
 		player.sendMessage(separator + "\n" + "§a§lKnockback profile list:\n");
 
-		for (KnockbackProfile profile : KnockbackConfig.getKbProfiles()) {
+		for (CraftKnockbackProfile profile : KnockbackConfig.getKbProfiles()) {
 			boolean current = KnockbackConfig.getCurrentKb().getName().equals(profile.getName());
 
 			TextComponent line = new ClickableBuilder("§8§l(§e§l➜§8§l) ")
@@ -488,7 +487,7 @@ public class KnockbackCommand extends Command {
 	}
 
 	private boolean isProfileName(String name) {
-		for (KnockbackProfile profile : KnockbackConfig.getKbProfiles()) {
+		for (CraftKnockbackProfile profile : KnockbackConfig.getKbProfiles()) {
 			if (profile.getName().equalsIgnoreCase(name)) {
 				return true;
 			}
