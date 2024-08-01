@@ -15,6 +15,10 @@ public class CraftKnockbackProfile implements KnockbackProfile {
 	private double extraVertical = 0.1D;
 	private double frictionHorizontal = 2.0D;
 	private double frictionVertical = 2.0D;
+	private double rangeFactor = 0.025D;
+	private double maxRangeReduction = 1.2D;
+	private double startRangeReduction = 3.0D;
+	private double minRange = 0.12D;
 
 	private boolean stopSprint = true;
 
@@ -56,6 +60,10 @@ public class CraftKnockbackProfile implements KnockbackProfile {
 		set(".friction-horizontal", this.frictionHorizontal);
 		set(".friction-vertical", this.frictionVertical);
 		set(".horizontal", this.horizontal);
+		set(".range-factor", this.rangeFactor);
+		set(".max-range-reduction", this.maxRangeReduction);
+		set(".start-range-reduction", this.startRangeReduction);
+		set(".min-range", this.minRange);
 		set(".vertical", this.vertical);
 		set(".vertical-max", this.verticalMax);
 		set(".vertical-min", this.verticalMin);
@@ -286,7 +294,10 @@ public class CraftKnockbackProfile implements KnockbackProfile {
 
 	@Override
 	public String[] getKnockbackValues() {
-		return new String[] { "Horizontal§7: " + this.horizontal, "Vertical§7: " + this.vertical,
+		return new String[] { "Horizontal§7: " + this.horizontal, 
+				"Range Factor§7: " + this.rangeFactor, "Max Range Reduction§7: " + this.maxRangeReduction, 
+				"Start Range Reduction§7: " + this.startRangeReduction, "Min Range§7: " + this.minRange,
+				"Vertical§7: " + this.vertical,
 				"Vertical-Max§7: " + this.verticalMax, "Vertical-Min§7: " + this.verticalMin,
 				"Extra-Horizontal§7: " + this.extraHorizontal, "Extra-Vertical§7: " + this.extraVertical,
 				"Friction-Horizontal§7: " + this.frictionHorizontal, "Friction-Vertical§7: " + this.frictionVertical,
