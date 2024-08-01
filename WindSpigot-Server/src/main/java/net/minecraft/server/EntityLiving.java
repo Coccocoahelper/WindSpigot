@@ -949,6 +949,28 @@ public abstract class EntityLiving extends Entity {
 	protected void dropEquipment(boolean flag, int i) {
 	}
 
+	public double distance(Entity entity1, Entity entity2) {
+		CraftEntity entity = entity1.getBukkitEntity();
+		CraftEntity target = entity2.getBukkitEntity();
+
+		if (entity.getWorld() != target.getWorld()) return -1.0D;
+		if (entity == target) return 0D;
+
+		return entity.getLocation().distance(target.getLocation());
+	}
+
+	private double calculateModifiedRange(CraftKnockbackProfile kb, double distance) {
+		if (distance <= kb.getStartRangeReduction()) {
+			return 0.0;
+		}
+
+		double knockbackRangeFactor = kb.getRangeFactor();
+		double maxRangeReduction = kb.getMaxRangeReduction();
+
+		double modifiedRange = knockbackRangeFactor * (distance - maxRangeReduction);
+		return Math.min(modifiedRange, kb.getMinRange());
+	}
+
 	public void a(double x, double z, DamageSource source) {
 		if (this.random.nextDouble() >= this.getAttributeInstance(GenericAttributes.c).getValue()) {
 			this.ai = true;
@@ -959,6 +981,9 @@ public abstract class EntityLiving extends Entity {
 
 			KnockbackProfile kb = (this.getKnockbackProfile() == null) ? KnockbackConfig.getCurrentKb()
 					: this.getKnockbackProfile();
+
+			double distance = this.distance(opponent, this);
+			double rangeReduction = this.calculateModifiedRange(kb, distance);
 
 			if (source instanceof EntityDamageSourceIndirect) {
 				if (((EntityDamageSourceIndirect) source).getProximateDamageSource() instanceof EntityFishingHook) {
@@ -991,9 +1016,9 @@ public abstract class EntityLiving extends Entity {
 			this.motZ /= kb.getFrictionHorizontal();
 			// WindSpigot end
 
-			this.motX -= x / magnitude * horizontal;
+			this.motX -= x / magnitude * (horizontal - rangeReduction);
 			this.motY += vertical;
-			this.motZ -= z / magnitude * horizontal;
+			this.motZ -= z / magnitude * (horizontal - rangeReduction);
 						
 			// WindSpigot start - knockback addition config
 			double addHorizontalX = kb.getAddHorizontal();
@@ -1002,6 +1027,7 @@ public abstract class EntityLiving extends Entity {
 			if (motX < 0) {
 				addHorizontalX = -addHorizontalX;
 			}
+
 			if (motZ < 0) {
 				addHorizontalZ = -addHorizontalZ;
 			}
@@ -1018,16 +1044,28 @@ public abstract class EntityLiving extends Entity {
 				motX += addHorizontalX;
 				motZ += addHorizontalZ;			
 			}
-			
+
+			if (this.motX && motZ > kb.getHorizontalMax()) {
+				this.motX = kb.getHorizontalMax();
+				this.motZ = kb.getHorizontalMax();
+			}
+
+			if (this.motX && motZ < kb.getHorizontalMin()) {
+				this.motX = kb.getHorizontalMin();
+				this.motZ = kb.getHorizontalMin();
+			}
+
 			motY += kb.getAddVertical();
 			// WindSpigot end
 			
 			if (this.motY > kb.getVerticalMax()) {
 				this.motY = kb.getVerticalMax();
 			}
+
 			if (this.motY < kb.getVerticalMin()) {
 				this.motY = kb.getVerticalMin();
 			}
+
 		}
 	}
 
