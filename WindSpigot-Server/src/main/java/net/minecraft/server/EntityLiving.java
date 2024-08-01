@@ -24,7 +24,6 @@ import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-import dev.cobblesword.nachospigot.knockback.KnockbackProfile;
 import ga.windpvp.windspigot.cache.Constants;
 import ga.windpvp.windspigot.config.WindSpigotConfig;
 import ga.windpvp.windspigot.knockback.KnockbackConfig;
@@ -854,7 +853,7 @@ public abstract class EntityLiving extends Entity {
 
 						this.aw = (float) (MathHelper.b(distanceZ, distanceX) * 180.0D / 3.1415927410125732D
 								- this.yaw);
-						this.a(distanceX, distanceZ, damagesource);
+						this.a(entity, distanceX, distanceZ, damagesource);
 					} else {
 						this.aw = (int) (random.nextDouble() * 2.0D) * 180;
 						// WindSpigot end
@@ -981,8 +980,8 @@ public abstract class EntityLiving extends Entity {
 			double horizontal = 0.4D;
 			double vertical = 0.4D;
 
-			KnockbackProfile kb = (this.getKnockbackProfile() == null) ? KnockbackConfig.getCurrentKb()
-					: this.getKnockbackProfile();
+			CraftKnockbackProfile kb = (CraftKnockbackProfile) ((this.getKnockbackProfile() == null) ? KnockbackConfig.getCurrentKb()
+					: this.getKnockbackProfile());
 
 			double distance = this.distance(opponent, this);
 			double rangeReduction = this.calculateModifiedRange(kb, distance);
