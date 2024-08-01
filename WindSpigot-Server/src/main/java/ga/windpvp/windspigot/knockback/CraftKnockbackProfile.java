@@ -2,6 +2,7 @@ package ga.windpvp.windspigot.knockback;
 
 import dev.cobblesword.nachospigot.knockback.KnockbackProfile;
 
+@Getter @Setter
 public class CraftKnockbackProfile implements KnockbackProfile {
 
 	private String name;
@@ -103,196 +104,6 @@ public class CraftKnockbackProfile implements KnockbackProfile {
 	}
 
 	@Override
-	public double getHorizontal() {
-		return horizontal;
-	}
-
-	@Override
-	public void setHorizontal(double horizontal) {
-		this.horizontal = horizontal;
-	}
-
-	@Override
-	public double getVertical() {
-		return vertical;
-	}
-
-	@Override
-	public void setVertical(double vertical) {
-		this.vertical = vertical;
-	}
-
-	@Override
-	public double getVerticalMin() {
-		return verticalMin;
-	}
-
-	@Override
-	public void setVerticalMin(double verticalMin) {
-		this.verticalMin = verticalMin;
-	}
-
-	@Override
-	public double getVerticalMax() {
-		return verticalMax;
-	}
-
-	@Override
-	public void setVerticalMax(double verticalMax) {
-		this.verticalMax = verticalMax;
-	}
-
-	@Override
-	public double getExtraHorizontal() {
-		return extraHorizontal;
-	}
-
-	@Override
-	public void setExtraHorizontal(double extraHorizontal) {
-		this.extraHorizontal = extraHorizontal;
-	}
-
-	@Override
-	public double getExtraVertical() {
-		return extraVertical;
-	}
-
-	@Override
-	public void setExtraVertical(double extraVertical) {
-		this.extraVertical = extraVertical;
-	}
-
-	@Override
-	public double getFrictionHorizontal() {
-		return frictionHorizontal;
-	}
-
-	@Override
-	public void setFrictionHorizontal(double frictionHorizontal) {
-		this.frictionHorizontal = frictionHorizontal;
-	}
-
-	@Override
-	public double getFrictionVertical() {
-		return frictionVertical;
-	}
-
-	@Override
-	public void setFrictionVertical(double frictionVertical) {
-		this.frictionVertical = frictionVertical;
-	}
-
-	@Override
-	public boolean isStopSprint() {
-		return stopSprint;
-	}
-
-	@Override
-	public void setStopSprint(boolean stopSprint) {
-		this.stopSprint = stopSprint;
-	}
-
-	@Override
-	public double getRodHorizontal() {
-		return rodHorizontal;
-	}
-
-	@Override
-	public void setRodHorizontal(double rodHorizontal) {
-		this.rodHorizontal = rodHorizontal;
-	}
-
-	@Override
-	public double getRodVertical() {
-		return rodVertical;
-	}
-
-	@Override
-	public void setRodVertical(double rodVertical) {
-		this.rodVertical = rodVertical;
-	}
-
-	@Override
-	public double getArrowHorizontal() {
-		return arrowHorizontal;
-	}
-
-	@Override
-	public void setArrowHorizontal(double arrowHorizontal) {
-		this.arrowHorizontal = arrowHorizontal;
-	}
-
-	@Override
-	public double getArrowVertical() {
-		return arrowVertical;
-	}
-
-	@Override
-	public void setArrowVertical(double arrowVertical) {
-		this.arrowVertical = arrowVertical;
-	}
-
-	@Override
-	public double getPearlHorizontal() {
-		return pearlHorizontal;
-	}
-
-	@Override
-	public void setPearlHorizontal(double pearlHorizontal) {
-		this.pearlHorizontal = pearlHorizontal;
-	}
-
-	@Override
-	public double getPearlVertical() {
-		return pearlVertical;
-	}
-
-	@Override
-	public void setPearlVertical(double pearlVertical) {
-		this.pearlVertical = pearlVertical;
-	}
-
-	@Override
-	public double getSnowballHorizontal() {
-		return snowballHorizontal;
-	}
-
-	@Override
-	public void setSnowballHorizontal(double snowballHorizontal) {
-		this.snowballHorizontal = snowballHorizontal;
-	}
-
-	@Override
-	public double getSnowballVertical() {
-		return snowballVertical;
-	}
-
-	@Override
-	public void setSnowballVertical(double snowballVertical) {
-		this.snowballVertical = snowballVertical;
-	}
-
-	@Override
-	public double getEggHorizontal() {
-		return eggHorizontal;
-	}
-
-	@Override
-	public void setEggHorizontal(double eggHorizontal) {
-		this.eggHorizontal = eggHorizontal;
-	}
-
-	@Override
-	public double getEggVertical() {
-		return eggVertical;
-	}
-
-	@Override
-	public void setEggVertical(double eggVertical) {
-		this.eggVertical = eggVertical;
-	}
-
-	@Override
 	public String[] getKnockbackValues() {
 		return new String[] { "Horizontal§7: " + this.horizontal, 
 				"Range Factor§7: " + this.rangeFactor, "Max Range Reduction§7: " + this.maxRangeReduction, 
@@ -301,8 +112,8 @@ public class CraftKnockbackProfile implements KnockbackProfile {
 				"Vertical-Max§7: " + this.verticalMax, "Vertical-Min§7: " + this.verticalMin,
 				"Extra-Horizontal§7: " + this.extraHorizontal, "Extra-Vertical§7: " + this.extraVertical,
 				"Friction-Horizontal§7: " + this.frictionHorizontal, "Friction-Vertical§7: " + this.frictionVertical,
-				"Stop-Sprint§7: " + this.stopSprint, "Wtap-Extra-Horizontal§7: " + this.wTapHorizontal,
-				"Wtap-Extra-Vertical§7: " + this.wTapVertical, "Add-Horizontal§7: " + this.addHorizontal,
+				"Stop-Sprint§7: " + this.stopSprint, "WTap-Extra-Horizontal§7: " + this.wTapHorizontal,
+				"WTap-Extra-Vertical§7: " + this.wTapVertical, "Add-Horizontal§7: " + this.addHorizontal,
 				"Add-Vertical§7: " + this.addVertical };
 	}
 
@@ -313,45 +124,5 @@ public class CraftKnockbackProfile implements KnockbackProfile {
 				"Pearl-Horizontal§7: " + this.pearlHorizontal, "Pearl-Vertical§7: " + this.pearlVertical,
 				"Snowball-Horizontal§7: " + this.snowballHorizontal, "Snowball-Vertical§7: " + this.snowballVertical,
 				"Egg-Horizontal§7: " + this.eggHorizontal, "Egg-Vertical§7: " + this.eggVertical, };
-	}
-
-	@Override
-	public double getWTapExtraHorizontal() {
-		return wTapHorizontal;
-	}
-
-	@Override
-	public void setWTapExtraHorizontal(double wtapHorizontal) {
-		this.wTapHorizontal = wtapHorizontal;
-	}
-
-	@Override
-	public double getWTapExtraVertical() {
-		return wTapVertical;
-	}
-
-	@Override
-	public void setWTapExtraVertical(double wTapVertical) {
-		this.wTapVertical = wTapVertical;
-	}
-
-	@Override
-	public double getAddHorizontal() {
-		return addHorizontal;
-	}
-
-	@Override
-	public void setAddHorizontal(double addHorizontal) {
-		this.addHorizontal = addHorizontal;
-	}
-
-	@Override
-	public double getAddVertical() {
-		return addVertical;
-	}
-
-	@Override
-	public void setAddVertical(double addVertical) {
-		this.addVertical = addVertical;
 	}
 }
