@@ -445,7 +445,7 @@ public class KnockbackCommand extends Command {
 		player.sendMessage(separator);
 	}
 
-	private void knockbackCommandView(Player player, KnockbackProfile profile) {
+	private void knockbackCommandView(Player player, CraftKnockbackProfile profile) {
 		player.sendMessage(separator + "\n" + "§a§lKnockback values:\n");
 		for (String values : profile.getKnockbackValues()) {
 			TextComponent value = new TextComponent("§6» §e" + values);
@@ -465,7 +465,7 @@ public class KnockbackCommand extends Command {
 		player.sendMessage(separator);
 	}
 
-	private void knockbackCommandViewProjectiles(Player player, KnockbackProfile profile) {
+	private void knockbackCommandViewProjectiles(Player player, CraftKnockbackProfile profile) {
 		player.sendMessage(separator + "\n§a§lProjectiles values: \n");
 		for (String values : profile.getProjectilesValues()) {
 			TextComponent value = new TextComponent("§6» §e" + values);
